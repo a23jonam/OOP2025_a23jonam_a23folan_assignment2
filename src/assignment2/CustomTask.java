@@ -58,12 +58,7 @@ public class CustomTask extends JPanel implements Task {
 		this.textLabel = new JLabel();
 		this.textLabel.setVisible(false);
 		
-		JPanel center = new JPanel();
-		/*JPanel center = new JPanel(new GridBagLayout());
-		GridBagConstraints gbc = new GridBagConstraints();
-		
-		gbc.gridx = 0; gbc.gridy = 0; gbc.weightx = 1; gbc.fill = GridBagConstraints.HORIZONTAL;*/
-		
+		JPanel center = new JPanel();	
 		
 		center.add(text);
 		center.add(textLabel);
@@ -83,17 +78,9 @@ public class CustomTask extends JPanel implements Task {
 		decrement.addActionListener(inputListener);
 		
 		JPanel buttonPanel = new JPanel();
-		/*buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS)); // Stack vertically
-        buttonPanel.setAlignmentY(Component.CENTER_ALIGNMENT); // Align with text field*/
 		buttonPanel.add(increment);
 		buttonPanel.add(decrement);
 		buttonPanel.add(remove);
-		
-		/*add(remove,BorderLayout.EAST);
-		remove.addActionListener(inputListener);*/
-		
-		/*add(increment,BorderLayout.NORTH);
-		add(decrement,BorderLayout.EAST);*/
 		
 		add(completed,BorderLayout.WEST);
 		add(buttonPanel, BorderLayout.EAST);
@@ -111,7 +98,7 @@ public class CustomTask extends JPanel implements Task {
 
 	@Override
 	public String getTaskType() {
-		return "Tally Counter";
+		return "Counter";
 	}
 
 	@Override

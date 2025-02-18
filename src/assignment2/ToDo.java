@@ -26,7 +26,7 @@ public class ToDo {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("To-do List");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(400,300);
+		frame.setSize(500,300);
 		frame.setLayout(new BorderLayout());
 		
 		JPanel buttonPanel = new JPanel();
@@ -34,9 +34,9 @@ public class ToDo {
 		buttonPanel.setPreferredSize(new Dimension(400, 50));
 		//JLabel buttonLabel = new JLabel("BUTTONS");
 		//buttonPanel.add(buttonLabel);
-		buttonPanel.add(new JButton("+ Home Task"));
-		buttonPanel.add(new JButton("+ Study Task"));
-		buttonPanel.add(new JButton("+ Counter Task"));
+		buttonPanel.add(new JButton("Add Home Task"));
+		buttonPanel.add(new JButton("Add Study Task"));
+		buttonPanel.add(new JButton("Add Counter Task"));
 		
 		JPanel taskPanel = new JPanel();
         taskPanel.setLayout(new BoxLayout(taskPanel, BoxLayout.Y_AXIS));
