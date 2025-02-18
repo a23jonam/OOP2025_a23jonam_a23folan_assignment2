@@ -1,4 +1,5 @@
 package assignment2;
+import assignment2.PBar;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -10,10 +11,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import se.his.it401g.todo.HomeTask;
 import se.his.it401g.todo.StudyTask;
 import se.his.it401g.todo.Task;
+import se.his.it401g.todo.TaskListener;
 
 public class ToDo {
 	public static void main(String[] args) {
@@ -44,9 +51,16 @@ public class ToDo {
 		Task studyTask = new StudyTask();
 		Task customTask = new CustomTask();
 
+		List<Task> tasks = new ArrayList<>();
+		
 		taskPanel.add(homeTask.getGuiComponent());
 		taskPanel.add(studyTask.getGuiComponent());
 		taskPanel.add(customTask.getGuiComponent());
+		
+		
+        PBar progressPanel = new PBar(tasks);
+        frame.add(progressPanel, BorderLayout.SOUTH);
+
 		
         frame.add(buttonPanel, BorderLayout.NORTH); // Buttons at top
         frame.add(new JScrollPane(taskPanel), BorderLayout.CENTER); // Scrollable task list
