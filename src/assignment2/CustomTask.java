@@ -4,7 +4,10 @@ package assignment2;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -54,20 +57,47 @@ public class CustomTask extends JPanel implements Task {
 		this.text = new JTextField("New task",20);
 		this.textLabel = new JLabel();
 		this.textLabel.setVisible(false);
+		
 		JPanel center = new JPanel();
+		/*JPanel center = new JPanel(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		
+		gbc.gridx = 0; gbc.gridy = 0; gbc.weightx = 1; gbc.fill = GridBagConstraints.HORIZONTAL;*/
+		
+		
 		center.add(text);
 		center.add(textLabel);
-		add(center);
+		add(center, BorderLayout.CENTER);
 		
 		TaskInputListener inputListener = new TaskInputListener(this, text, textLabel);
 		this.text.addKeyListener(inputListener);
 		this.textLabel.addMouseListener(inputListener);
 		
 		JButton remove = new JButton("Remove");
-		add(remove,BorderLayout.EAST);
+		
+		JButton increment = new JButton ("+");
+		JButton decrement = new JButton ("-");
+		
 		remove.addActionListener(inputListener);
+		increment.addActionListener(inputListener);
+		decrement.addActionListener(inputListener);
+		
+		JPanel buttonPanel = new JPanel();
+		/*buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS)); // Stack vertically
+        buttonPanel.setAlignmentY(Component.CENTER_ALIGNMENT); // Align with text field*/
+		buttonPanel.add(increment);
+		buttonPanel.add(decrement);
+		buttonPanel.add(remove);
+		
+		/*add(remove,BorderLayout.EAST);
+		remove.addActionListener(inputListener);*/
+		
+		/*add(increment,BorderLayout.NORTH);
+		add(decrement,BorderLayout.EAST);*/
 		
 		add(completed,BorderLayout.WEST);
+		add(buttonPanel, BorderLayout.EAST);
+		
 		completed.addItemListener(inputListener);
 		
 		setMaximumSize(new Dimension(1000,50));
