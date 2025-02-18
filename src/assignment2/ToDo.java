@@ -19,9 +19,11 @@ public class ToDo {
 		
 		Task homeTask = new HomeTask();
 		Task studyTask = new StudyTask();
+		Task customTask = new CustomTask();
 		//Task task1 = new StudyTask();
 		panel.add(homeTask.getGuiComponent());
 		panel.add(studyTask.getGuiComponent());
+		panel.add(customTask.getGuiComponent());
 		frame.add(panel);
 		frame.setBounds(100,100,400,100);
 		frame.setVisible(true);
