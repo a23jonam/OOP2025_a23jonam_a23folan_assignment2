@@ -60,6 +60,8 @@ public class PBar extends JPanel implements TaskListener {
         if (taskList.remove(t) ) {
         	completedTasks = Math.max(0, completedTasks - 1);
         }
+        
+	    
         updateProgress();
     }
 

@@ -64,6 +64,7 @@ public class ToDo {
         for (Task task : tasks) {
             task.setTaskListener(progressPanel);
         }
+
         frame.add(progressPanel, BorderLayout.SOUTH);
 
 		
@@ -86,18 +87,21 @@ public class ToDo {
 		    taskPanel.add(newTask.getGuiComponent());  
 		    taskPanel.revalidate();  
 		    taskPanel.repaint();
+		    
 		});
 		
 		counterTaskButton.addActionListener(e -> {
 		    Task newTask = new CustomTask(); 
 		    newTask.setTaskListener(progressPanel);
 		    progressPanel.taskCreated(newTask);
-		    taskPanel.add(newTask.getGuiComponent()); 
-
+		    taskPanel.add(newTask.getGuiComponent());
+		    //taskPanel.remove(task.getGuiComponent());
 		    taskPanel.revalidate(); 
 		    taskPanel.repaint();
-		});
 
+		});
+		
+		
 		
         frame.setVisible(true);
     }
