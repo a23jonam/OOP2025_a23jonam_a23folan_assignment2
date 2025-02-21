@@ -19,7 +19,7 @@ public class PBar extends JPanel implements TaskListener {
     	this.taskList = tasks;
         setLayout(new BorderLayout());        
 
-        completedLabel = new JLabel("0 / " + taskList.size() + " tasks completed", SwingConstants.CENTER);
+        completedLabel = new JLabel(completedTasks + "0 / " + taskList.size() + " tasks completed", SwingConstants.CENTER);
         add(completedLabel, BorderLayout.CENTER);
         updateProgress();
     }
