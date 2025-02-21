@@ -67,9 +67,9 @@ public class ToDo {
 		tasks.add(studyTask);
 		tasks.add(customTask);*/
 		
-		taskPanel.add(homeTask.getGuiComponent());
-		taskPanel.add(studyTask.getGuiComponent());
-		taskPanel.add(customTask.getGuiComponent());
+		//taskPanel.add(homeTask.getGuiComponent());
+		//taskPanel.add(studyTask.getGuiComponent());
+		//taskPanel.add(customTask.getGuiComponent());
 		
 		String[] items = {"SORT", "Alphabetical", "Completed", "Non-Completed", "Type"};
 		JComboBox<String> comboBox = new JComboBox<>(items);
@@ -77,6 +77,9 @@ public class ToDo {
 		
 		
         PBar progressPanel = new PBar(tasks);
+        for (Task task : tasks) {
+            task.setTaskListener(progressPanel);
+        }
         frame.add(progressPanel, BorderLayout.SOUTH);
 
 		
@@ -86,6 +89,7 @@ public class ToDo {
 		homeTaskButton.addActionListener(e -> {
 		    Task newTask = new HomeTask();  // Create new home task
 		    tasks.add(newTask);  // Add it to the task list
+		    newTask.setTaskListener(progressPanel);
 		    taskPanel.add(newTask.getGuiComponent());  // Add it to the UI
 		    taskPanel.revalidate();  // Recalculate layout
 		    taskPanel.repaint();
@@ -94,6 +98,7 @@ public class ToDo {
 		studyTaskButton.addActionListener(e -> {
 		    Task newTask = new StudyTask();  // Create new home task
 		    tasks.add(newTask);  // Add it to the task list
+		    newTask.setTaskListener(progressPanel);
 		    taskPanel.add(newTask.getGuiComponent());  // Add it to the UI
 		    taskPanel.revalidate();  // Recalculate layout
 		    taskPanel.repaint();
@@ -102,6 +107,7 @@ public class ToDo {
 		counterTaskButton.addActionListener(e -> {
 		    Task newTask = new CustomTask();  // Create new home task
 		    tasks.add(newTask);  // Add it to the task list
+		    newTask.setTaskListener(progressPanel);
 		    taskPanel.add(newTask.getGuiComponent());  // Add it to the UI
 		    taskPanel.revalidate();  // Recalculate layout
 		    taskPanel.repaint();
