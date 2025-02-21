@@ -18,19 +18,19 @@ public class PBar extends JPanel implements TaskListener {
     public PBar(List<Task> tasks) {
     	this.taskList = tasks;
         setLayout(new BorderLayout());        
-
-        completedLabel = new JLabel(completedTasks + "0 / " + taskList.size() + " tasks completed", SwingConstants.CENTER);
+        completedLabel = new JLabel("0 / " + taskList.size() + " tasks completed", SwingConstants.CENTER);
         add(completedLabel, BorderLayout.CENTER);
         updateProgress();
     }
 
     private void updateProgress() {
-        if (taskList.isEmpty()) {
+    	if (taskList.isEmpty()) {
             completedLabel.setText("0 / 0 tasks completed");
             return;
         }
-
+        
         completedLabel.setText(completedTasks + " / " + taskList.size() + " tasks completed");
+        
     }
     
     @Override
@@ -44,7 +44,7 @@ public class PBar extends JPanel implements TaskListener {
 
     @Override
     public void taskUncompleted(Task t) {
-        if (!t.isComplete() && completedTasks > 0 && taskList.contains(t)) {
+        if (!t.isComplete() && taskList.contains(t)) {
             completedTasks--;
             updateProgress();
         }
@@ -52,23 +52,22 @@ public class PBar extends JPanel implements TaskListener {
 
     @Override
     public void taskChanged(Task t) {
-        //updateProgress();
+
     }
 
     @Override
     public void taskRemoved(Task t) {
-        if (taskList.remove(t) && t.isComplete()) {
-            completedTasks--;
+        if (taskList.remove(t) ) {
+        	completedTasks = Math.max(0, completedTasks - 1);
         }
         updateProgress();
     }
 
 	@Override
 	public void taskCreated(Task t) {
-        taskList.add(t);
+		
+        taskList.add(t); 
         updateProgress();
-
 	}
-	
 
 }

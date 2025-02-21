@@ -41,12 +41,7 @@ public class ToDo {
 		buttonPanel.add(homeTaskButton);
 		buttonPanel.add(studyTaskButton);
 		buttonPanel.add(counterTaskButton);
-		
-		//JLabel buttonLabel = new JLabel("BUTTONS");
-		//buttonPanel.add(buttonLabel);
-		/*buttonPanel.add(new JButton ("Add Home Task"));
-		buttonPanel.add(new JButton("Add Study Task"));
-		buttonPanel.add(new JButton("Add Counter Task"));*/
+
 		
 		List<Task> tasks = new ArrayList<>();
 		
@@ -55,21 +50,10 @@ public class ToDo {
         taskPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
 		taskPanel.setLayout(new BoxLayout(taskPanel, BoxLayout.Y_AXIS));
-		//JLabel taskLabel = new JLabel("TASKS");
-		//taskPanel.add(taskLabel);
+
 		taskPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
-		Task homeTask = new HomeTask();
-		Task studyTask = new StudyTask();
-		Task customTask = new CustomTask();
-		
-		/*tasks.add(homeTask);
-		tasks.add(studyTask);
-		tasks.add(customTask);*/
-		
-		//taskPanel.add(homeTask.getGuiComponent());
-		//taskPanel.add(studyTask.getGuiComponent());
-		//taskPanel.add(customTask.getGuiComponent());
+
 		
 		String[] items = {"SORT", "Alphabetical", "Completed", "Non-Completed", "Type"};
 		JComboBox<String> comboBox = new JComboBox<>(items);
@@ -83,35 +67,37 @@ public class ToDo {
         frame.add(progressPanel, BorderLayout.SOUTH);
 
 		
-        frame.add(buttonPanel, BorderLayout.NORTH); // Buttons at top
-        frame.add(new JScrollPane(taskPanel), BorderLayout.CENTER); // Scrollable task list
+        frame.add(buttonPanel, BorderLayout.NORTH); 	
+        frame.add(new JScrollPane(taskPanel), BorderLayout.CENTER); 
         
 		homeTaskButton.addActionListener(e -> {
-		    Task newTask = new HomeTask();  // Create new home task
-		    tasks.add(newTask);  // Add it to the task list
+		    Task newTask = new HomeTask();  
 		    newTask.setTaskListener(progressPanel);
-		    taskPanel.add(newTask.getGuiComponent());  // Add it to the UI
-		    taskPanel.revalidate();  // Recalculate layout
+		    progressPanel.taskCreated(newTask);
+		    taskPanel.add(newTask.getGuiComponent());  
+		    taskPanel.revalidate(); 
 		    taskPanel.repaint();
 		});
 
 		studyTaskButton.addActionListener(e -> {
-		    Task newTask = new StudyTask();  // Create new home task
-		    tasks.add(newTask);  // Add it to the task list
+		    Task newTask = new StudyTask();  
 		    newTask.setTaskListener(progressPanel);
-		    taskPanel.add(newTask.getGuiComponent());  // Add it to the UI
-		    taskPanel.revalidate();  // Recalculate layout
+		    progressPanel.taskCreated(newTask);
+		    taskPanel.add(newTask.getGuiComponent());  
+		    taskPanel.revalidate();  
 		    taskPanel.repaint();
 		});
 		
 		counterTaskButton.addActionListener(e -> {
-		    Task newTask = new CustomTask();  // Create new home task
-		    tasks.add(newTask);  // Add it to the task list
+		    Task newTask = new CustomTask(); 
 		    newTask.setTaskListener(progressPanel);
-		    taskPanel.add(newTask.getGuiComponent());  // Add it to the UI
-		    taskPanel.revalidate();  // Recalculate layout
+		    progressPanel.taskCreated(newTask);
+		    taskPanel.add(newTask.getGuiComponent()); 
+
+		    taskPanel.revalidate(); 
 		    taskPanel.repaint();
 		});
+
 		
         frame.setVisible(true);
     }
