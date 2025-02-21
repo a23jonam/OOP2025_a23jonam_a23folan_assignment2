@@ -32,26 +32,27 @@ public class PBar extends JPanel implements TaskListener {
 
         completedLabel.setText(completedTasks + " / " + taskList.size() + " tasks completed");
     }
-
+    
     @Override
     public void taskCompleted(Task t) {
-        if (!t.isComplete()) {
+
+        if (t.isComplete() && taskList.contains(t)) {
             completedTasks++;
+            updateProgress();
         }
-        updateProgress();
     }
 
     @Override
     public void taskUncompleted(Task t) {
-        if (t.isComplete()) {
+        if (!t.isComplete() && completedTasks > 0 && taskList.contains(t)) {
             completedTasks--;
+            updateProgress();
         }
-        updateProgress();
     }
 
     @Override
     public void taskChanged(Task t) {
-        updateProgress();
+        //updateProgress();
     }
 
     @Override
@@ -68,5 +69,6 @@ public class PBar extends JPanel implements TaskListener {
         updateProgress();
 
 	}
+	
 
 }
